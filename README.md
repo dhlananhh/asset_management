@@ -96,7 +96,7 @@ This module was built following Odoo's core principles, leveraging the ORM, View
 
 ## Installation & Setup
 
-This module is designed to be installed on an existing Odoo 18 instance. If you have not yet installed Odoo, please refer to the installation guide provided in the `om_hr_portal` module's README.
+This module is designed to be installed on an existing Odoo 18 instance. If you have not yet installed Odoo, please refer to the installation guide provided in the `om_hr_portal` module's README [here](https://github.com/dhlananhh/hr_portal).
 
 ### Prerequisites
 
