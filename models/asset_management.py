@@ -66,3 +66,21 @@ class AssetManagement(models.Model):
         for record in self:
             if record.value < 0:
                 raise ValidationError("The asset value cannot be negative.")
+
+    def set_state_to_in_use(self):
+        for record in self:
+            record.state = "in_use"
+
+    def set_state_to_repair(self):
+        for record in self:
+            record.state = "repair"
+
+    def set_state_to_retired(self):
+        for record in self:
+            record.state = "retired"
+            record.employee_id = False
+
+    def set_state_to_new(self):
+        """Allow returning to 'New' state, e.g., after a repair"""
+        for record in self:
+            record.state = "new"

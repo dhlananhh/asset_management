@@ -37,12 +37,44 @@
     <field name="arch" type="xml">
       <form string="Equipment">
         <header>
-          <field name="state" widget="statusbar" statusbar_visible="new,in_use,repair,retired" />
+          <button
+            name="set_state_to_in_use"
+            type="object"
+            string="Start Using"
+            class="oe_highlight"
+            invisible="state != 'new'"
+          />
+          <button
+            name="set_state_to_repair"
+            type="object"
+            string="Send to Repair"
+            invisible="state != 'in_use'"
+          />
+          <button
+            name="set_state_to_retired"
+            type="object"
+            string="Retire"
+            invisible="state not in ['in_use', 'repair']"
+          />
+          <button
+            name="set_state_to_new"
+            type="object"
+            string="Set to New"
+            invisible="state not in ['repair', 'retired']"
+          />
+          <field
+            name="state"
+            widget="statusbar"
+            statusbar_visible="new,in_use,repair,retired"
+          />
         </header>
         <sheet>
           <div class="oe_title">
             <h1>
-              <field name="name" placeholder="e.g. MacBook Pro 14 inch" />
+              <field
+                name="name"
+                placeholder="e.g. MacBook Pro 14 inch"
+              />
             </h1>
             <h2>
               <field name="reference" readonly="1" />
