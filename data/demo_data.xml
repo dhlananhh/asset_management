@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- This data is only loaded in demo mode -->
+  <data noupdate="1">
+    <!-- First, create some asset categories -->
+    <record id="asset_category_laptop" model="asset.category">
+      <field name="name">Laptops</field>
+    </record>
+    <record id="asset_category_monitor" model="asset.category">
+      <field name="name">Monitors</field>
+    </record>
+    <record id="asset_category_peripheral" model="asset.category">
+      <field name="name">Peripherals</field>
+    </record>
+
+    <!-- Then, create some demo assets -->
+    <record id="demo_asset_01" model="asset.management">
+      <field name="name">MacBook Pro 14" M2</field>
+      <field name="category_id" ref="asset_category_laptop" />
+      <field name="employee_id" ref="hr.employee_admin" /> <!-- Assigns to Mitchell Admin -->
+      <field name="value">1999.00</field>
+      <field name="state">in_use</field>
+    </record>
+
+    <record id="demo_asset_02" model="asset.management">
+      <field name="name">Dell UltraSharp 27" Monitor</field>
+      <field name="category_id" ref="asset_category_monitor" />
+      <field name="employee_id" ref="hr.employee_qdp" /> <!-- Assigns to Abigail Peterson -->
+      <field name="value">650.00</field>
+      <field name="state">in_use</field>
+    </record>
+
+    <record id="demo_asset_03" model="asset.management">
+      <field name="name">HP LaserJet Pro Printer</field>
+      <field name="category_id" ref="asset_category_peripheral" />
+      <field name="value">300.00</field>
+      <field name="state">new</field>
+    </record>
+  </data>
+</odoo>

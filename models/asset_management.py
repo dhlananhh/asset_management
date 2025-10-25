@@ -23,12 +23,21 @@ class AssetManagement(models.Model):
         readonly=True,
     )
 
+    category_id = fields.Many2one(
+        "asset.category", string="Asset Category", tracking=True
+    )
+
+    assign_date = fields.Date(string="Assigned Date", default=fields.Date.context_today)
+
     purchase_date = fields.Date(
         string="Purchase Date", required=True, default=fields.Date.today
     )
     value = fields.Float(string="Value", required=True, tracking=True)
 
     employee_id = fields.Many2one("hr.employee", string="Assigned to", tracking=True)
+
+    technician_id = fields.Many2one("hr.employee", string="Technician")
+
     department_id = fields.Many2one(
         "hr.department",
         string="Department",
@@ -50,7 +59,7 @@ class AssetManagement(models.Model):
         tracking=True,
     )
 
-    notes = fields.Text(string="Notes")
+    notes = fields.Text(string="Description")
 
     @api.constrains("value")
     def _check_value(self):

@@ -25,6 +25,9 @@
         "views/asset_management_views.xml",
         "views/menu.xml",
     ],
+    "demo": [
+        "data/demo_data.xml",
+    ],
     "installable": True,
     "application": True,
     "auto_install": False,

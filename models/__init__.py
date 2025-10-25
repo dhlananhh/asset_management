@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-from . import asset_management
+from . import asset_category, asset_management

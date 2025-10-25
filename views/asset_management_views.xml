@@ -1,82 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!-- Tree View -->
+  <record id="view_asset_management_search" model="ir.ui.view">
+    <field name="name">asset.management.search</field>
+    <field name="model">asset.management</field>
+    <field name="arch" type="xml">
+      <search string="Search Equipment">
+        <field name="name" string="Equipment" />
+        <field name="reference" />
+        <field name="employee_id" />
+        <field name="department_id" />
+        <separator />
+        <filter string="In Use" name="filter_in_use" domain="[('state', '=', 'in_use')]" />
+        <group expand="0" string="Group By">
+          <filter string="Status" name="groupby_state" context="{'group_by':'state'}" />
+        </group>
+      </search>
+    </field>
+  </record>
   <record id="view_asset_management_tree" model="ir.ui.view">
     <field name="name">asset.management.list</field>
     <field name="model">asset.management</field>
     <field name="arch" type="xml">
-      <list string="Assets">
+      <list string="Equipment" decoration-muted="state == 'retired'"
+        decoration-warning="state == 'repair'">
         <field name="reference" />
         <field name="name" />
         <field name="employee_id" />
-        <field name="department_id" />
-        <field name="purchase_date" />
-        <field name="state" />
+        <field name="state" widget="badge" decoration-success="state == 'in_use'"
+          decoration-info="state == 'new'" />
       </list>
     </field>
   </record>
-
-  <!-- Form View -->
   <record id="view_asset_management_form" model="ir.ui.view">
     <field name="name">asset.management.form</field>
     <field name="model">asset.management</field>
     <field name="arch" type="xml">
-      <form string="Asset">
+      <form string="Equipment">
         <header>
-          <field name="state" widget="statusbar" statusbar_visible="new,in_use,retired" />
+          <field name="state" widget="statusbar" statusbar_visible="new,in_use,repair,retired" />
         </header>
         <sheet>
           <div class="oe_title">
             <h1>
-              <field name="reference" readonly="1" />
+              <field name="name" placeholder="e.g. MacBook Pro 14 inch" />
             </h1>
+            <h2>
+              <field name="reference" readonly="1" />
+            </h2>
           </div>
           <group>
             <group>
-              <field name="name" />
+              <field name="category_id" />
               <field name="employee_id" />
-              <field name="department_id" />
             </group>
             <group>
               <field name="purchase_date" />
               <field name="value" widget="monetary" />
             </group>
           </group>
-          <notebook>
-            <page string="Notes">
-              <field name="notes" placeholder="Add any notes here..." />
-            </page>
-          </notebook>
         </sheet>
-        <!-- Chatter -->
-        <div class="oe_chatter">
-          <field name="message_follower_ids" />
-          <field name="activity_ids" />
-          <field name="message_ids" />
-        </div>
       </form>
     </field>
   </record>
-
-  <!-- Search View -->
-  <record id="view_asset_management_search" model="ir.ui.view">
-    <field name="name">asset.management.search</field>
-    <field name="model">asset.management</field>
-    <field name="arch" type="xml">
-      <search string="Search Assets">
-        <field name="name" string="Asset" />
-        <field name="employee_id" />
-        <field name="department_id" />
-        <separator />
-        <filter string="In Use" name="in_use" domain="[('state', '=', 'in_use')]" />
-        <filter string="Under Repair" name="repair" domain="[('state', '=', 'repair')]" />
-        <group expand="0" string="Group By">
-          <filter string="Department" name="groupby_department"
-            context="{'group_by':'department_id'}" />
-          <filter string="Status" name="groupby_state" context="{'group_by':'state'}" />
-        </group>
-      </search>
-    </field>
-  </record>
-
 </odoo>
