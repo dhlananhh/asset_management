@@ -36,6 +36,10 @@ class AssetManagement(models.Model):
 
     employee_id = fields.Many2one("hr.employee", string="Assigned to", tracking=True)
 
+    employee_avatar = fields.Image(
+        string="Avatar", related="employee_id.avatar_128", readonly=True
+    )
+
     technician_id = fields.Many2one("hr.employee", string="Technician")
 
     department_id = fields.Many2one(
@@ -60,6 +64,7 @@ class AssetManagement(models.Model):
     )
 
     notes = fields.Text(string="Description")
+    color = fields.Integer(string="Color Index")
 
     @api.constrains("value")
     def _check_value(self):
