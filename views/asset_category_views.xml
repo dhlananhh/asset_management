@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="view_asset_category_tree" model="ir.ui.view">
+    <field name="name">asset.category.tree</field>
+    <field name="model">asset.category</field>
+    <field name="arch" type="xml">
+      <tree string="Equipment Categories" editable="bottom">
+        <field name="name" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_asset_category_form" model="ir.ui.view">
+    <field name="name">asset.category.form</field>
+    <field name="model">asset.category</field>
+    <field name="arch" type="xml">
+      <form string="Equipment Category">
+        <sheet>
+          <group>
+            <field name="name" />
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_asset_category" model="ir.actions.act_window">
+    <field name="name">Equipment Categories</field>
+    <field name="res_model">asset.category</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        Create a new equipment category.
+      </p>
+      <p>
+        Examples: Laptops, Monitors, Keyboards, Office Chairs...
+      </p>
+    </field>
+  </record>
+</odoo>

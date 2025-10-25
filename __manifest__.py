@@ -8,7 +8,7 @@
         A simple module to manage asset registrations, track status,
         and assign assets to employees within a department.
     """,
-    "author": "Duong Hoang Lan Anh",
+    "author": "Lan Anh",
     "category": "Human Resources",
     "depends": [
         "base",
@@ -22,6 +22,7 @@
         # Data files next
         "data/sequence_data.xml",
         # View files
+        "views/asset_category_views.xml",
         "views/asset_management_views.xml",
         "views/menu.xml",
     ],
